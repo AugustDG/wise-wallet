@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 22, 2023 at 06:29 AM
+-- Generation Time: Jan 22, 2023 at 01:49 PM
 -- Server version: 10.4.24-MariaDB
 -- PHP Version: 8.1.6
 
@@ -39,12 +39,11 @@ CREATE TABLE `fruits` (
 -- Dumping data for table `fruits`
 --
 
---ADD FRUITS HERE!!!
-INSERT INTO `fruits` (`fruit`) VALUES
-('apple'),
-('banana'),
-('orange'),
-('kiwi');
+INSERT INTO `fruits` (`id`, `fruit`, `cur_price`, `best_price`, `best_price_url`) VALUES
+(1, 'apple', 0, 0.7, 'https://www.superc.ca/en/aisles/fruits-vegetables/fruits/apples-pears/apple/p/4129'),
+(2, 'banana', 0, 0.29, 'https://www.superc.ca/en/aisles/fruits-vegetables/fruits/bananas-plantains/banana/p/4011'),
+(3, 'orange', 0, 1.64, 'https://www.superc.ca/en/aisles/fruits-vegetables/fruits/citrus-fruits/seedless-navel-orange/p/3156'),
+(4, 'kiwi', 0, 0.99, 'https://www.superc.ca/en/aisles/fruits-vegetables/fruits/avocadoes-exotic-fruits/kiwi/p/4030');
 
 --
 -- Indexes for dumped tables
