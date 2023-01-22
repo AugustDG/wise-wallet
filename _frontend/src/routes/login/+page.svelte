@@ -1,40 +1,28 @@
 <script lang="ts">
-	import { goto } from '$app/navigation';
 	import loginIcon from '$lib/icons/login.png';
+	import logo from '$lib/icons/logo.png';
 	import auth from '$lib/services/auth';
-	import { isAuthenticated } from '$lib/stores/auth';
-	import { page } from '$app/stores';
-	import cookie from 'cookie';
 
-	async function submit() {
+	async function login() {
 		let client = await auth.createClient();
 
-		await auth.loginWithPopup(client, {
-			authorizationParams: { redirect_uri: 'http://localhost:5173' }
-		});
-
-		if ($isAuthenticated) {
-			goto('/dashboard');
-		}
+		await auth.loginWithPopup(client);
 	}
 </script>
 
 <div id="login-container">
 	<div id="login-bg-filter">
 		<div id="logo">
-			<img
-				src="https://marketplace.canva.com/EAE3ErRzI6g/1/0/1600w/canva-people-dollar-logo%2C-money-finances-logo-gdfxtb4mf80.jpg"
-				alt="logo"
-			/>
+			<img src={logo} alt="logo" />
 		</div>
 		<div id="welcome">
 			<div id="welcome-header" class="header">
-				<h2>Welcome to Blended Finance</h2>
+				<h2>Welcome to WiseWallet</h2>
 			</div>
 			<div id="welcome-body">
 				<p>
-					Blended Finance helps you make the right purchasing decisions by delivering the internet's
-					knowledge to your palm.
+					WiseWallet helps you make the right purchasing decisions by delivering the internet's
+					knowledge to the palm of your hand.
 				</p>
 			</div>
 		</div>
@@ -45,7 +33,7 @@
 				</div>
 				<div id="login-body">
 					<div id="login-body-form">
-						<button type="submit" on:click={submit}>
+						<button type="submit" on:click={login}>
 							<span>Get Started</span>
 							<img id="login-icon" src={loginIcon} alt="login logo" /></button
 						>
@@ -65,19 +53,17 @@
 
 		background-image: url('https://www.thegef.org/sites/default/files/styles/banner_image/public/2021-11/topics_banner_blendedfinance.jpg?h=4e9a1ef8&itok=7cUg7zcQ');
 		background-repeat: no-repeat;
-		background-position: 50% 50%;
+		background-position: center;
 		background-size: cover;
 
 		#logo {
 			position: absolute;
-			top: 4rem;
-			left: 4rem;
+			top: 6vh;
+			left: 4vw;
 
 			img {
 				width: 5rem;
 				height: 5rem;
-
-				border-radius: 100%;
 			}
 		}
 
@@ -117,7 +103,7 @@
 			}
 
 			#welcome-body {
-				padding-right: 30%;
+				padding-right: 20%;
 
 				font-family: 'Nanum Gothic', 'Gothic Medium';
 
@@ -142,7 +128,7 @@
 				padding: 5rem 3rem;
 
 				border-radius: 7px;
-				box-shadow: $layoutShadow;
+				box-shadow: $layout-shadow;
 
 				display: flex;
 				justify-items: stretch;
@@ -195,7 +181,7 @@
 							&:hover {
 								cursor: pointer;
 								filter: brightness(1.2);
-								box-shadow: $buttonShadow;
+								box-shadow: $button-shadow;
 							}
 
 							&:active {

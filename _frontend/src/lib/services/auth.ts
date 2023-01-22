@@ -11,11 +11,13 @@ async function createClient() {
 	return auth0Client;
 }
 
-async function loginWithPopup(client: Auth0Client, options: PopupLoginOptions) {
+async function loginWithPopup(client: Auth0Client) {
 	popupOpen.set(true);
 
 	try {
-		await client.loginWithRedirect(options);
+		await client.loginWithRedirect({
+			authorizationParams: { prompt: 'login', redirect_uri: window.location.origin + '/dashboard' }
+		});
 
 		const fetchedUser = await client.getUser();
 
@@ -29,7 +31,7 @@ async function loginWithPopup(client: Auth0Client, options: PopupLoginOptions) {
 }
 
 function logout(client: Auth0Client) {
-	return client.logout();
+	return client.logout({ logoutParams: { returnTo: window.location.origin + '/login?code=out' } });
 }
 
 const auth = {
