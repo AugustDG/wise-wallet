@@ -1,5 +1,8 @@
 <script lang="ts">
+	import CustomButton from '$lib/components/CustomButton.svelte';
+
 	import loginIcon from '$lib/icons/login.png';
+
 	import logo from '$lib/icons/logo.png';
 	import auth from '$lib/services/auth';
 
@@ -33,10 +36,7 @@
 				</div>
 				<div id="login-body">
 					<div id="login-body-form">
-						<button type="submit" on:click={login}>
-							<span>Get Started</span>
-							<img id="login-icon" src={loginIcon} alt="login logo" /></button
-						>
+						<CustomButton class="c-control" value="Get Started" icon={loginIcon} action={login} />
 					</div>
 				</div>
 			</div>
@@ -150,52 +150,6 @@
 
 				#login-body {
 					margin: 0;
-
-					#login-body-form {
-						button {
-							font-family: 'Nanum Gothic', 'Gothic Medium';
-							font-weight: 700;
-
-							width: 100%;
-							margin-top: 2rem;
-							margin-left: auto;
-							margin-right: auto;
-							padding: 0.5rem 0.6rem;
-
-							display: flex;
-							justify-content: center;
-							align-content: center;
-							align-items: center;
-							gap: 0.5rem;
-
-							border-style: solid;
-							border-width: 2px;
-							border-radius: 3px;
-							border-color: $black;
-
-							text-transform: uppercase;
-
-							background-color: $black;
-							color: $white;
-
-							&:hover {
-								cursor: pointer;
-								filter: brightness(1.2);
-								box-shadow: $button-shadow;
-							}
-
-							&:active {
-								#login-icon {
-									filter: brightness(0.8);
-								}
-							}
-
-							#login-icon {
-								aspect-ratio: 1;
-								height: 1.5rem;
-							}
-						}
-					}
 				}
 			}
 		}

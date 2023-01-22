@@ -10,7 +10,7 @@ const config = {
 			tsconfigFile: './tsconfig.json'
 		},
 		scss: {
-			prependData: '@import "src/styles/_main.scss";'
+			prependData: '@use "sass:math" as math; @import "src/styles/_main.scss";'
 		}
 	}),
 
