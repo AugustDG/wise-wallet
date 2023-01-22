@@ -4,14 +4,14 @@ import mysql.connector
 
 from priceInfo import PriceInfo
 
+#for demo, just got one working, but the plan is to have a bunch of websites around Montreal
 urlToId = {
-    "https://www.iga.net/en/search?k=": PriceInfo("id", "body_0_main_1_GrocerySearch_TemplateResult_SearchResultListView_MansoryPanel", "item-product", "price text--strong", "span", "string", "js-ga-productimage", "https://www.iga.net"), # %20 for spaces
+    #"https://www.iga.net/en/search?k=": PriceInfo("id", "body_0_main_1_GrocerySearch_TemplateResult_SearchResultListView_MansoryPanel", "item-product", "price text--strong", "span", "string", "js-ga-productimage", "https://www.iga.net"), # %20 for spaces
     #"https://www.maxi.ca/search?search-bar=": PriceLocation(), # %20 for spaces
     "https://www.superc.ca/en/search?filter=": PriceInfo("class", "products-tiles-list", "products-tile-list__tile", "pi--main-price", "div", "data-main-price", "product-details-link", "https://www.superc.ca") # %20 for spaces
 }
 
 db = mysql.connector.connect(
-    #change these parameters later
     host="localhost",
     user="root",
     password="",
@@ -20,7 +20,7 @@ db = mysql.connector.connect(
 
 cursor = db.cursor()
 
-cursor.execute("SELECT fruit FROM fruitsandvegetables")
+cursor.execute("SELECT fruit FROM fruits")
 
 fruitAndVegetableList = cursor.fetchall()
 
@@ -57,10 +57,6 @@ for fruit in fruitAndVegetableList:
         priceTags = doc.find_all("div", class_=priceLoc.priceLocationClass)
         priceLinks = doc.find_all("a", class_=priceLoc.linkLocationClass)
 
-
-        #rn for super c only one item in itemList (should be all on page)
-        #print(len(itemList))
-
         for item in itemList:
             curPriceTag = item.find(priceLoc.priceTag, class_=priceLoc.priceLocationClass)
 
@@ -80,6 +76,6 @@ for fruit in fruitAndVegetableList:
     print(bestPrice)
     print(bestPriceUrl)
 
-    cursor.execute("UPDATE fruitsandvegetables SET bestPrice=%s, bestPriceUrl=%s WHERE fruit=%s", (bestPrice, bestPriceUrl, fruit))
+    cursor.execute("UPDATE fruits SET best_price=%s, best_price_url=%s WHERE fruit=%s", (bestPrice, bestPriceUrl, fruit))
     db.commit()
 
