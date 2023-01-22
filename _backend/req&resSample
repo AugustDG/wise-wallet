@@ -1,0 +1,42 @@
+req:
+
+[
+    {
+        "fruit": "apple",
+        "curPrice": 5.99
+    },
+    {
+        "fruit": "banana",
+        "curPrice": 6.99
+    },
+    {
+        "fruit": "kiwi",
+        "curPrice": 7.0
+    }
+]
+
+res:
+
+[
+    {
+        "id": 1,
+        "fruit": "apple",
+        "curPrice": 5.99,
+        "bestPrice": 0.7,
+        "bestPriceUrl": "https://www.superc.ca/en/aisles/fruits-vegetables/fruits/apples-pears/apple/p/4129"
+    },
+    {
+        "id": 2,
+        "fruit": "banana",
+        "curPrice": 6.99,
+        "bestPrice": 0.29,
+        "bestPriceUrl": "https://www.superc.ca/en/aisles/fruits-vegetables/fruits/bananas-plantains/banana/p/4011"
+    },
+    {
+        "id": 4,
+        "fruit": "kiwi",
+        "curPrice": 7.0,
+        "bestPrice": 0.99,
+        "bestPriceUrl": "https://www.superc.ca/en/aisles/fruits-vegetables/fruits/avocadoes-exotic-fruits/kiwi/p/4030"
+    }
+]
