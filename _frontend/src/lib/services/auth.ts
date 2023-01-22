@@ -15,7 +15,7 @@ async function loginWithPopup(client: Auth0Client, options: PopupLoginOptions) {
 	popupOpen.set(true);
 
 	try {
-		await client.loginWithPopup(options);
+		await client.loginWithRedirect(options);
 
 		const fetchedUser = await client.getUser();
 

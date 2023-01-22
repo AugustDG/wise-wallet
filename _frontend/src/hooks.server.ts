@@ -1,11 +1,12 @@
-import { isAuthenticated } from './lib/stores/auth';
-import { get } from 'svelte/store';
 import type { Handle } from '@sveltejs/kit';
 
 export const handle: Handle = async function ({ event, resolve }) {
-	console.log('handle', event);
+	let token = event.url.searchParams.get('code');
 
-	if (!get(isAuthenticated) && event.route.id !== '/login') {
+	if (token == null || token == '') token = event.cookies.get('token') ?? null;
+	else event.cookies.set('token', token);
+
+	if (token == null && event.route.id !== '/login') {
 		return Response.redirect(`${event.url.origin}/login`, 307);
 	}
 

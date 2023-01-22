@@ -4,7 +4,7 @@
 	import auth from '$lib/services/auth';
 	import { isAuthenticated } from '$lib/stores/auth';
 	import { page } from '$app/stores';
-	//import cookie from 'cookie';
+	import cookie from 'cookie';
 
 	async function submit() {
 		let client = await auth.createClient();
