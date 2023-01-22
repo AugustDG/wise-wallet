@@ -1,4 +1,5 @@
-todo:
+This module will pull information from grocery websites in Montreal
+and save the best prices in our database
 
-    -make it work for two other websites (iga, maxi, metro, provigo)
-    -add 10-20 more fruits and vegetables
+The webscraping uses the BeautifulSoup4 library and stores the data
+in a MySQL DB.
