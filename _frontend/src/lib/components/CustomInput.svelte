@@ -4,8 +4,14 @@
 	export let placeholder = 'Name';
 	export let value: string | File = 'Augusto Mota Pinheiro';
 	export let processing = false;
+	export let action: (e: Event) => void = () => {};
 
 	const onFileSelected = (e: Event) => {
+		if (type != 'file') {
+			action(e);
+			return;
+		}
+
 		processing = true;
 
 		if (e.target == null) return;
