@@ -7,6 +7,11 @@ declare global {
 		// interface PageData {}
 		// interface Platform {}
 	}
+
+	type User = {
+		name?: string | undefined;
+		email?: string | undefined;
+	};
 }
 
 export {};
